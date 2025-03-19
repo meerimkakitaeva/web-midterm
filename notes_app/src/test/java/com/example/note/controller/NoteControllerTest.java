@@ -16,11 +16,11 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/notes")
-public class NoteController {
+public class NoteControllerTest {
 
     private final NoteService noteService;
 
-    public NoteController(NoteService noteService) {
+    public NoteControllerTest(NoteService noteService) {
         this.noteService = noteService;
     }
 
@@ -35,7 +35,7 @@ public class NoteController {
     @Operation(summary = "Get notes by user ID", description = "Retrieve notes assigned to a specific user by their user ID")
     @ApiResponse(responseCode = "200", description = "Successfully retrieved notes by user ID", content = @Content(mediaType = "application/json", schema = @Schema(implementation = NoteModel.class)))
     @GetMapping("/byUser")
-    public ResponseApi<List<NoteModel>> getAllNotesByUserId(@Parameter(description = "The ID of the user to filter notes by") @RequestParam Long userId) {
+    public ResponseApi<List<NoteModel>> getNotesByUserId(@Parameter(description = "The ID of the user to filter notes by") @RequestParam Long userId) {
         List<NoteModel> notes = noteService.getNotesByUserId(userId);
         return new ResponseApi<>(notes, ResponseCode.SUCCESS);
     }
