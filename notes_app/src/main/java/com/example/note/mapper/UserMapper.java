@@ -36,6 +36,7 @@ public class UserMapper {
 
     public User toEntity(UserModel dto) {
         User user = new User();
+        user.setId(dto.getId());
         user.setUsername(dto.getUsername());
         user.setPassword(dto.getPassword());
         return user;
